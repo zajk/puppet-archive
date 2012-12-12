@@ -36,7 +36,7 @@ define archive::download (
   $allow_insecure = false) {
 
   Exec {
-    path => [ '/usr/local/bin', '/usr/bin', 'bin', ],
+    path => [ '/usr/local/bin', '/usr/bin', '/bin', ],
   }
 
   $insecure_arg = $allow_insecure ? {

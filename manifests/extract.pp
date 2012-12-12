@@ -35,7 +35,7 @@ define archive::extract (
   $timeout    = 120) {
 
   Exec {
-    path => [ '/usr/local/bin', '/usr/bin', 'bin', ],
+    path => [ '/usr/local/bin', '/usr/bin', '/bin', ],
   }
 
   if $root_dir != '' {

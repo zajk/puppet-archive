@@ -1,0 +1,8 @@
+name         'puppet-archive'
+version      '0.1.0'
+author       'Jochen Schalanda'
+license      'Apache 2.0'
+project_page 'https://github.com/smarchive/puppet-archive'
+source       'https://github.com/smarchive/puppet-archive'
+summary      'Puppet module to download and extract tar and zip archives'
+description  'This module downloads archives (tar.{gz,bz2,xz} and zip) using curl and extracts them to a given directory.'

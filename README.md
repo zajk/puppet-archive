@@ -6,7 +6,7 @@ Archive Puppet Module
 Overview
 --------
 
-Puppet Module to download and extract tar and zip archives based on [camptocamp/puppet-archive](https://github.com/camptocamp/puppet-archive).
+Puppet module to download and extract tar and zip archives based on [camptocamp/puppet-archive](https://github.com/camptocamp/puppet-archive).
 
 Supported archive types are:
 
@@ -31,7 +31,7 @@ License
 
 Puppet module originally from [camptocamp/puppet-archive](https://github.com/camptocamp/puppet-archive).
 
-All changes copyright (c) 2012 smarchive GmbH
+All changes copyright (c) 2012, 2013 smarchive GmbH
 
 This script is licensed under the Apache License, Version 2.0.
 

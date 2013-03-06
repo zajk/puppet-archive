@@ -57,7 +57,11 @@ define archive::extract (
         /(tar.gz|tgz)/   => "mkdir -p ${target} && ${extract_targz}",
         /(tar.xz|txz)/   => "mkdir -p ${target} && ${extract_tarxz}",
         /(tar.bz2|tbz2)/ => "mkdir -p ${target} && ${extract_tarbz2}",
-        default          => fail("Unknown extension value '${extension}'"),
+        default          => 'UNKNOWN',
+      }
+
+      if $unpack_command == 'UNKNOWN' {
+        fail("Unknown extension value '${extension}'")
       }
 
       exec {"Unpack ${name}":

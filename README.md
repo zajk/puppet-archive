@@ -1,7 +1,7 @@
 Archive Puppet Module
 ====================
 
-[![Build Status](https://secure.travis-ci.org/smarchive/puppet-archive.png)](http://travis-ci.org/smarchive/puppet-archive)
+Project moved to https://github.com/gini/puppet-archive
 
 Overview
 --------
@@ -36,9 +36,3 @@ All changes copyright (c) 2012, 2013 smarchive GmbH
 This script is licensed under the Apache License, Version 2.0.
 
 See http://www.apache.org/licenses/LICENSE-2.0.html for the full license text.
-
-
-Support
--------
-
-Please log tickets and issues at our [project site](https://github.com/smarchive/puppet-archive/issues).

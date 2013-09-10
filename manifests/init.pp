@@ -15,6 +15,8 @@
 # - *$extension: Default value ".tar.gz"
 # - *$timeout: Default value 120
 # - *$allow_insecure: Default value false
+# - *$username: set basic auth username
+# - *$password: set basic auth password
 #
 # Example usage:
 #
@@ -22,6 +24,14 @@
 #     ensure => present,
 #     url => "http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz",
 #     target => "/opt",
+#   }
+#
+#   archive {"apache-tomcat-6.0.26":
+#     ensure   => present,
+#     url      => "http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz",
+#     username => "example",
+#     password => "example",
+#     target   => "/opt",
 #   }
 define archive (
   $url,
@@ -35,7 +45,9 @@ define archive (
   $root_dir       = '',
   $extension      = 'tar.gz',
   $src_target     = '/usr/src',
-  $allow_insecure = false){
+  $allow_insecure = false,
+  $username = undef,
+  $password = undef ){
 
   archive::download {"${name}.${extension}":
     ensure         => $ensure,
@@ -47,6 +59,8 @@ define archive (
     timeout        => $timeout,
     src_target     => $src_target,
     allow_insecure => $allow_insecure,
+    username       => $username,
+    password       => $password
   }
 
   archive::extract { $name:

@@ -33,7 +33,15 @@ define archive::download (
   $digest_type    = 'md5',
   $timeout        = 120,
   $src_target     = '/usr/src',
-  $allow_insecure = false) {
+  $allow_insecure = false,
+  $username       = undef,
+  $password       = undef ) {
+    
+  if ( $username == undef && $password == undef ) {
+    $basic_auth = ""
+  } else {
+    $basic_auth = "--user ${username}:${password}"
+  }
 
   Exec {
     path => [ '/usr/local/bin', '/usr/bin', '/bin', ],
@@ -73,7 +81,7 @@ define archive::download (
             }
 
             exec {"download digest of archive ${name}":
-              command => "curl ${insecure_arg} -L -s -o ${src_target}/${name}.${digest_type} ${digest_src}",
+              command => "curl ${basic_auth} ${insecure_arg} -L -s -o ${src_target}/${name}.${digest_type} ${digest_src}",
               creates => "${src_target}/${name}.${digest_type}",
               timeout => $timeout,
               notify  => Exec["download archive ${name} and check sum"],
@@ -129,7 +137,7 @@ define archive::download (
       }
 
       exec {"download archive ${name} and check sum":
-        command     => "curl -L -s ${insecure_arg} -o ${src_target}/${name} ${url}",
+        command     => "curl ${basic_auth} -L -s ${insecure_arg} -o ${src_target}/${name} ${url}",
         creates     => "${src_target}/${name}",
         logoutput   => true,
         timeout     => $timeout,
